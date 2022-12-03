@@ -16,6 +16,7 @@ const fs = require("fs");
 const inquirer = require("inquirer");
 const { getSystemErrorName } = require("util");
 
+const team = [];
 const questionsManager = [
   {
     type: "input",
@@ -37,12 +38,15 @@ const questionsManager = [
     message: "Team Manager's Office Number:",
     name: "inputManagerOffice",
   },
-  //   {
-  //     type: "list",
-  //     message: "Please select an employee type to add to your team:",
-  //     name: "inputMenu",
-  //     choices: ["Engineer", "Intern", "I'm finsihed"],
-  //   },
+];
+
+const questionsEmployeeType = [
+  {
+    type: "list",
+    message: "Please select an employee type to add to your team:",
+    name: "inputEmployeeType",
+    choices: ["Engineer", "Intern", "I'm finsihed"],
+  },
 ];
 
 class Employee {
@@ -74,18 +78,35 @@ class Intern extends Employee {
   }
 }
 
+function managerQuestions() {
+  inquirer.prompt(questionsManager).then(function (answers) {
+    team.push(answers);
+    console.log(team);
+
+    employeeTypeQuestions();
+  });
+}
+
+function employeeTypeQuestions() {
+  inquirer.prompt(questionsEmployeeType).then(function (answers) {
+    if (answers.inputEmployeeType === "Engineer") {
+      console.log("Engineer Selected!");
+    }
+  });
+}
+
 // Function to initialize app
 function init() {
-  inquirer.prompt(questionsManager).then((answers) => {
-    const manager = new Manager(
-      answers.inputManagerName,
-      answers.inputManagerId,
-      answers.inputManagerEmail,
-      answers.inputManagerOffice
-    );
-    console.log(manager);
-  });
+  managerQuestions();
 }
 
 // Function call to initialize app
 init();
+
+// const manager = new Manager(
+//   answers.inputManagerName,
+//   answers.inputManagerId,
+//   answers.inputManagerEmail,
+//   answers.inputManagerOffice
+// );
+// console.log(manager);
