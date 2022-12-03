@@ -60,6 +60,20 @@ class Manager extends Employee {
   }
 }
 
+class Engineer extends Employee {
+  constructor(name, id, email, username) {
+    super(name, id, email);
+    this.engineerUsername = username;
+  }
+}
+
+class Intern extends Employee {
+  constructor(name, id, email, school) {
+    super(name, id, email);
+    this.internSchool = school;
+  }
+}
+
 // Function to initialize app
 function init() {
   inquirer.prompt(questionsManager).then((answers) => {
