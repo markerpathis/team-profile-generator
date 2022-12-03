@@ -11,3 +11,50 @@
 /////////// intern - name, employee ID, email, school, then return to menu
 /////////// when finished, the HTML file is generated
 
+// Packages needed for this application
+const fs = require("fs");
+const inquirer = require("inquirer");
+
+const questions = [
+  {
+    type: "input",
+    message: "Team Manager's Full Name:",
+    name: "inputManagerName",
+  },
+  {
+    type: "input",
+    message: "Team Manager's Employee ID:",
+    name: "inputManagerId",
+  },
+  {
+    type: "input",
+    message: "Team Manager's Email Address:",
+    name: "inputManagerEmail",
+  },
+  {
+    type: "input",
+    message: "Team Manager's Office Number:",
+    name: "inputManagerOffice",
+  },
+  //   {
+  //     type: "list",
+  //     message: "Please select an employee type to add to your team:",
+  //     name: "inputMenu",
+  //     choices: ["Engineer", "Intern", "I'm finsihed"],
+  //   },
+];
+
+// Function to initialize app
+function init() {
+  inquirer
+    .prompt(questions)
+    //   .then((answers) => writeToFile("README.md", answers));
+    .then((answers) => {
+      console.log(
+        `ManagerName: ${answers.inputManagerName}, ID: ${answers.inputManagerId}, Email: ${answers.inputManagerEmail}, Office: ${answers.inputManagerOffice}`
+      );
+    });
+}
+
+// Function call to initialize app
+init();

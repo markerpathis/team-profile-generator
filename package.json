@@ -1,0 +1,22 @@
+{
+  "name": "npm-install-pkg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/markerpathis/team-profile-generator.git"
+  },
+  "author": "Parker Mathis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/markerpathis/team-profile-generator/issues"
+  },
+  "homepage": "https://github.com/markerpathis/team-profile-generator#readme",
+  "dependencies": {
+    "inquirer": "^8.2.5"
+  }
+}
