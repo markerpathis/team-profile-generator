@@ -14,8 +14,9 @@
 // Packages needed for this application
 const fs = require("fs");
 const inquirer = require("inquirer");
+const { getSystemErrorName } = require("util");
 
-const questions = [
+const questionsManager = [
   {
     type: "input",
     message: "Team Manager's Full Name:",
@@ -44,16 +45,32 @@ const questions = [
   //   },
 ];
 
+class Employee {
+  constructor(name, id, email) {
+    this.employeeName = name;
+    this.employeeId = id;
+    this.employeeEmail = email;
+  }
+}
+
+class Manager extends Employee {
+  constructor(name, id, email, office) {
+    super(name, id, email);
+    this.managerOffice = office;
+  }
+}
+
 // Function to initialize app
 function init() {
-  inquirer
-    .prompt(questions)
-    //   .then((answers) => writeToFile("README.md", answers));
-    .then((answers) => {
-      console.log(
-        `ManagerName: ${answers.inputManagerName}, ID: ${answers.inputManagerId}, Email: ${answers.inputManagerEmail}, Office: ${answers.inputManagerOffice}`
-      );
-    });
+  inquirer.prompt(questionsManager).then((answers) => {
+    const manager = new Manager(
+      answers.inputManagerName,
+      answers.inputManagerId,
+      answers.inputManagerEmail,
+      answers.inputManagerOffice
+    );
+    console.log(manager);
+  });
 }
 
 // Function call to initialize app
