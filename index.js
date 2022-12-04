@@ -100,6 +100,23 @@ class Employee {
     this.employeeName = name;
     this.employeeId = id;
     this.employeeEmail = email;
+    this.employeeRole = "Employee";
+  }
+  getName() {
+    console.log("getName: " + this.employeeName);
+    return this.employeeName;
+  }
+  getId() {
+    console.log("getId: " + this.employeeId);
+    return this.employeeId;
+  }
+  getEmail() {
+    console.log("getEmail: " + this.employeeEmail);
+    return this.employeeEmail;
+  }
+  getRole() {
+    console.log("getRole: " + this.employeeRole);
+    return "this.employeeRole";
   }
 }
 
@@ -107,6 +124,11 @@ class Manager extends Employee {
   constructor(name, id, email, office) {
     super(name, id, email);
     this.managerOffice = office;
+    this.managerRole = "Manager";
+  }
+  getRole() {
+    console.log("getRole: " + this.managerRole);
+    return this.managerRole;
   }
 }
 
@@ -126,8 +148,13 @@ class Intern extends Employee {
 
 function managerQuestions() {
   inquirer.prompt(questionsManager).then(function (answers) {
-    team.push(answers);
-    console.log(team);
+    const manager = new Manager(
+      answers.inputManagerName,
+      answers.inputManagerId,
+      answers.inputManagerEmail,
+      answers.inputManagerOffice
+    );
+    team.push(manager);
 
     employeeTypeQuestions();
   });
