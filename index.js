@@ -124,11 +124,11 @@ class Manager extends Employee {
   constructor(name, id, email, office) {
     super(name, id, email);
     this.managerOffice = office;
-    this.managerRole = "Manager";
+    this.employeeRole = "Manager";
   }
   getRole() {
-    console.log("getRole: " + this.managerRole);
-    return this.managerRole;
+    console.log("getRole: " + this.employeeRole);
+    return this.employeeRole;
   }
 }
 
@@ -136,6 +136,11 @@ class Engineer extends Employee {
   constructor(name, id, email, username) {
     super(name, id, email);
     this.engineerUsername = username;
+    this.employeeRole = "Engineer";
+  }
+  getRole() {
+    console.log("getRole: " + this.employeeRole);
+    return this.employeeRole;
   }
 }
 
@@ -143,6 +148,11 @@ class Intern extends Employee {
   constructor(name, id, email, school) {
     super(name, id, email);
     this.internSchool = school;
+    this.employeeRole = "Intern";
+  }
+  getRole() {
+    console.log("getRole: " + this.employeeRole);
+    return this.employeeRole;
   }
 }
 
@@ -155,6 +165,7 @@ function managerQuestions() {
       answers.inputManagerOffice
     );
     team.push(manager);
+    console.log(team);
 
     employeeTypeQuestions();
   });
@@ -174,7 +185,13 @@ function employeeTypeQuestions() {
 
 function engineerQuestions() {
   inquirer.prompt(questionsEngineer).then(function (answers) {
-    team.push(answers);
+    const engineer = new Engineer(
+      answers.inputEngineerName,
+      answers.inputEngineerId,
+      answers.inputEngineerEmail,
+      answers.inputEngineerUsername
+    );
+    team.push(engineer);
     console.log(team);
 
     employeeTypeQuestions();
@@ -183,7 +200,13 @@ function engineerQuestions() {
 
 function internQuestions() {
   inquirer.prompt(questionsIntern).then(function (answers) {
-    team.push(answers);
+    const intern = new Intern(
+      answers.inputInternName,
+      answers.inputInternId,
+      answers.inputInternEmail,
+      answers.inputInternSchool
+    );
+    team.push(intern);
     console.log(team);
 
     employeeTypeQuestions();
