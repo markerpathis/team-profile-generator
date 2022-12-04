@@ -14,7 +14,7 @@
 // Packages needed for this application
 const fs = require("fs");
 const inquirer = require("inquirer");
-const { getSystemErrorName } = require("util");
+// const generateHTML = require
 
 const team = [];
 const questionsManager = [
@@ -116,7 +116,7 @@ class Employee {
   }
   getRole() {
     console.log("getRole: " + this.employeeRole);
-    return "this.employeeRole";
+    return this.employeeRole;
   }
 }
 
@@ -220,11 +220,3 @@ function init() {
 
 // Function call to initialize app
 init();
-
-// const manager = new Manager(
-//   answers.inputManagerName,
-//   answers.inputManagerId,
-//   answers.inputManagerEmail,
-//   answers.inputManagerOffice
-// );
-// console.log(manager);
