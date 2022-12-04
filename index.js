@@ -49,6 +49,31 @@ const questionsEmployeeType = [
   },
 ];
 
+const questionsEngineer = [
+  {
+    type: "input",
+    message: "Engineer's Full Name:",
+    name: "inputEngineerName",
+  },
+  {
+    type: "input",
+    message: "Engineer's Employee ID:",
+    name: "inputEngineerId",
+  },
+  {
+    type: "input",
+    message: "Engineer's Email Address:",
+    name: "inputEngineerEmail",
+  },
+  {
+    type: "input",
+    message: "Engineer's GitHub Username:",
+    name: "inputEngineerUsername",
+  },
+];
+
+const questionsIntern = [];
+
 class Employee {
   constructor(name, id, email) {
     this.employeeName = name;
@@ -91,7 +116,18 @@ function employeeTypeQuestions() {
   inquirer.prompt(questionsEmployeeType).then(function (answers) {
     if (answers.inputEmployeeType === "Engineer") {
       console.log("Engineer Selected!");
+
+      engineerQuestions();
     }
+  });
+}
+
+function engineerQuestions() {
+  inquirer.prompt(questionsEngineer).then(function (answers) {
+    team.push(answers);
+    console.log(team);
+
+    employeeTypeQuestions();
   });
 }
 
