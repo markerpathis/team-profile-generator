@@ -1,7 +1,4 @@
-const generateCards = require("./generateCards");
 
-function generateHTML(team) {
-  return `
   <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -26,12 +23,21 @@ function generateHTML(team) {
       </section>
     </header>
     <div class="container cardcontainer pt-6 pl-6 pr-6 is-centered">
-    ${generateCards(team)}
+    
+          <div class="card">
+          <header class="card-header">
+            <p class="card-header-title">Parker<br />Manager</p>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              ID: 1 <br />Email: 2 <br />
+              Office Number: xx
+            </div>
+          </div>
+        </div>
+            
     </div>
     <script src="./index.js"></script>
   </body>
 </html>
-  `;
-}
-
-module.exports = generateHTML;
+  

@@ -14,7 +14,8 @@
 // Packages needed for this application
 const fs = require("fs");
 const inquirer = require("inquirer");
-// const generateHTML = require
+const generateHTML = require("./utils/generateHTML");
+// const generateCards = require("./utils/generateCards");
 
 const team = [];
 const questionsManager = [
@@ -45,7 +46,7 @@ const questionsEmployeeType = [
     type: "list",
     message: "Please select an employee type to add to your team:",
     name: "inputEmployeeType",
-    choices: ["Engineer", "Intern", "I'm finsihed"],
+    choices: ["Engineer", "Intern", "I'm finished"],
   },
 ];
 
@@ -179,6 +180,9 @@ function employeeTypeQuestions() {
     } else if (answers.inputEmployeeType === "Intern") {
       console.log("Intern Selected!");
       internQuestions();
+    } else if (answers.inputEmployeeType === "I'm finished") {
+      writeToFile("index2.html", generateHTML(team));
+      //   writeToFile("index2.html", generateManagerCard());
     }
   });
 }
@@ -213,10 +217,18 @@ function internQuestions() {
   });
 }
 
+function writeToFile(fileName, answers) {
+  fs.writeFile(fileName, answers, (err) =>
+    err ? console.error(err) : console.log("Success!")
+  );
+}
+
 // Function to initialize app
 function init() {
   managerQuestions();
 }
+
+// .then((answers) => writeToFile("index2.html", answers))
 
 // Function call to initialize app
 init();
