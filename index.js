@@ -104,19 +104,15 @@ class Employee {
     this.employeeRole = "Employee";
   }
   getName() {
-    console.log("getName: " + this.employeeName);
     return this.employeeName;
   }
   getId() {
-    console.log("getId: " + this.employeeId);
     return this.employeeId;
   }
   getEmail() {
-    console.log("getEmail: " + this.employeeEmail);
     return this.employeeEmail;
   }
   getRole() {
-    console.log("getRole: " + this.employeeRole);
     return this.employeeRole;
   }
 }
@@ -128,7 +124,6 @@ class Manager extends Employee {
     this.employeeRole = "Manager";
   }
   getRole() {
-    console.log("getRole: " + this.employeeRole);
     return this.employeeRole;
   }
 }
@@ -140,7 +135,6 @@ class Engineer extends Employee {
     this.employeeRole = "Engineer";
   }
   getRole() {
-    console.log("getRole: " + this.employeeRole);
     return this.employeeRole;
   }
 }
@@ -152,19 +146,13 @@ class Intern extends Employee {
     this.employeeRole = "Intern";
   }
   getRole() {
-    console.log("getRole: " + this.employeeRole);
     return this.employeeRole;
   }
 }
 
 function managerQuestions() {
   inquirer.prompt(questionsManager).then(function (answers) {
-    const manager = new Manager(
-      answers.inputManagerName,
-      answers.inputManagerId,
-      answers.inputManagerEmail,
-      answers.inputManagerOffice
-    );
+    const manager = new Manager(answers.inputManagerName, answers.inputManagerId, answers.inputManagerEmail, answers.inputManagerOffice);
     team.push(manager);
     console.log(team);
 
@@ -189,12 +177,7 @@ function employeeTypeQuestions() {
 
 function engineerQuestions() {
   inquirer.prompt(questionsEngineer).then(function (answers) {
-    const engineer = new Engineer(
-      answers.inputEngineerName,
-      answers.inputEngineerId,
-      answers.inputEngineerEmail,
-      answers.inputEngineerUsername
-    );
+    const engineer = new Engineer(answers.inputEngineerName, answers.inputEngineerId, answers.inputEngineerEmail, answers.inputEngineerUsername);
     team.push(engineer);
     console.log(team);
 
@@ -204,12 +187,7 @@ function engineerQuestions() {
 
 function internQuestions() {
   inquirer.prompt(questionsIntern).then(function (answers) {
-    const intern = new Intern(
-      answers.inputInternName,
-      answers.inputInternId,
-      answers.inputInternEmail,
-      answers.inputInternSchool
-    );
+    const intern = new Intern(answers.inputInternName, answers.inputInternId, answers.inputInternEmail, answers.inputInternSchool);
     team.push(intern);
     console.log(team);
 
@@ -218,9 +196,7 @@ function internQuestions() {
 }
 
 function writeToFile(fileName, answers) {
-  fs.writeFile(fileName, answers, (err) =>
-    err ? console.error(err) : console.log("Success!")
-  );
+  fs.writeFile(fileName, answers, (err) => (err ? console.error(err) : console.log("Success!")));
 }
 
 // Function to initialize app
