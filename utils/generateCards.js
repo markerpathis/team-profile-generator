@@ -10,7 +10,7 @@ function generateCards(team) {
           </header>
           <div class="card-content">
             <div class="content">
-              ID: ${team[i].getId()} <br />Email: ${team[i].getEmail()} <br />
+              ID: ${team[i].getId()} <br />Email: <a href="mailto:${team[i].getEmail()}">${team[i].getEmail()}</a> <br />
               Office Number: ${team[i].managerOffice}
             </div>
           </div>
@@ -25,8 +25,8 @@ function generateCards(team) {
       </header>
       <div class="card-content">
         <div class="content">
-          ID: ${team[i].getId()} <br />Email: ${team[i].getEmail()} <br />
-          GitHub: ${team[i].engineerUsername}
+          ID: ${team[i].getId()} <br />Email: <a href="mailto:${team[i].getEmail()}">${team[i].getEmail()}</a> <br />
+          GitHub: <a href="https://github.com/${team[i].engineerUsername}" target="_blank">${team[i].engineerUsername}</a>
         </div>
       </div>
     </div>
@@ -40,7 +40,7 @@ function generateCards(team) {
       </header>
       <div class="card-content">
         <div class="content">
-          ID: ${team[i].getId()} <br />Email: ${team[i].getEmail()} <br />
+          ID: ${team[i].getId()} <br />Email: <a href="mailto:${team[i].getEmail()}">${team[i].getEmail()}</a> <br />
           School: ${team[i].internSchool}
         </div>
       </div>
