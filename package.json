@@ -18,5 +18,8 @@
   "homepage": "https://github.com/markerpathis/team-profile-generator#readme",
   "dependencies": {
     "inquirer": "^8.2.5"
+  },
+  "devDependencies": {
+    "jest": "^29.3.1"
   }
 }
