@@ -16,6 +16,9 @@ const fs = require("fs");
 const inquirer = require("inquirer");
 const generateHTML = require("./utils/generateHTML");
 // const generateCards = require("./utils/generateCards");
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
 
 const team = [];
 const questionsManager = [
@@ -96,60 +99,6 @@ const questionsIntern = [
   },
 ];
 
-class Employee {
-  constructor(name, id, email) {
-    this.employeeName = name;
-    this.employeeId = id;
-    this.employeeEmail = email;
-    this.employeeRole = "Employee";
-  }
-  getName() {
-    return this.employeeName;
-  }
-  getId() {
-    return this.employeeId;
-  }
-  getEmail() {
-    return this.employeeEmail;
-  }
-  getRole() {
-    return this.employeeRole;
-  }
-}
-
-class Manager extends Employee {
-  constructor(name, id, email, office) {
-    super(name, id, email);
-    this.managerOffice = office;
-    this.employeeRole = "Manager";
-  }
-  getRole() {
-    return this.employeeRole;
-  }
-}
-
-class Engineer extends Employee {
-  constructor(name, id, email, username) {
-    super(name, id, email);
-    this.engineerUsername = username;
-    this.employeeRole = "Engineer";
-  }
-  getRole() {
-    return this.employeeRole;
-  }
-}
-
-class Intern extends Employee {
-  constructor(name, id, email, school) {
-    super(name, id, email);
-    this.internSchool = school;
-    this.employeeRole = "Intern";
-  }
-  getRole() {
-    return this.employeeRole;
-  }
-}
-
 function managerQuestions() {
   inquirer.prompt(questionsManager).then(function (answers) {
     const manager = new Manager(answers.inputManagerName, answers.inputManagerId, answers.inputManagerEmail, answers.inputManagerOffice);
@@ -170,7 +119,6 @@ function employeeTypeQuestions() {
       internQuestions();
     } else if (answers.inputEmployeeType === "I'm finished") {
       writeToFile("index2.html", generateHTML(team));
-      //   writeToFile("index2.html", generateManagerCard());
     }
   });
 }
@@ -203,8 +151,6 @@ function writeToFile(fileName, answers) {
 function init() {
   managerQuestions();
 }
-
-// .then((answers) => writeToFile("index2.html", answers))
 
 // Function call to initialize app
 init();
