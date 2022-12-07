@@ -25,9 +25,9 @@ In order to use this application the user needs to install Node dependencies wit
 
 ## Usage
 
-Once the dependencies are installed, the user can use the command line to start answering the inquirer prompts by entering the following command - “node index.js”. The user will need to answer the questions related to the Manager before being able to continue to enter information about an Engineer, Intern or select that they are finished. The user can enter the details for as many Engineers or Interns as the would like, and can end the process after any entry by selecting that they are finished and then the HTML file will be generated. 
+Once the dependencies are installed, the user can use the command line to start answering the inquirer prompts by entering the following command - “node index.js”. The user will need to answer the questions related to the Manager before being able to continue to enter information about an Engineer, Intern or select that they are finished. The user can enter the details for as many Engineers or Interns as the would like, and can end the process after any entry by selecting that they are finished and then the HTML file will be generated.
 
-A video walkthrough of the command-line application being used is included at the link below:
+A video walkthrough of the command-line application being used is included at the link below:<br />
 https://user-images.githubusercontent.com/111654725/206064689-70b698d9-0186-46a6-8d08-d6209275f1f5.mp4
 
 ## License

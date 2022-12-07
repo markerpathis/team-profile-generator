@@ -1,12 +1,19 @@
 // Packages needed for this application
 const fs = require("fs");
 const inquirer = require("inquirer");
+
+// Import the generate HTML js file to be used in the writeToFile function
 const generateHTML = require("./utils/generateHTML");
+
+// Import the subclasses
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 
+// Array used to capture the employee entries from Inquirer
 const team = [];
+
+// Questions used in Inquirer to provide details about the team Manager
 const questionsManager = [
   {
     type: "input",
@@ -30,6 +37,7 @@ const questionsManager = [
   },
 ];
 
+// Question used in Inquirer to determine if the user will next provide details
 const questionsEmployeeType = [
   {
     type: "list",
@@ -39,6 +47,7 @@ const questionsEmployeeType = [
   },
 ];
 
+// Questions used in Inquirer to provide details about the team Engineer(s)
 const questionsEngineer = [
   {
     type: "input",
@@ -62,6 +71,7 @@ const questionsEngineer = [
   },
 ];
 
+// Questions used in Inquirer to provide details about the team Intern(s)
 const questionsIntern = [
   {
     type: "input",
@@ -85,6 +95,7 @@ const questionsIntern = [
   },
 ];
 
+// Creates a new Manager object using the information provided using Inquirer and pushes the object to the team array
 function managerQuestions() {
   inquirer.prompt(questionsManager).then(function (answers) {
     const manager = new Manager(answers.inputManagerName, answers.inputManagerId, answers.inputManagerEmail, answers.inputManagerOffice);
@@ -94,6 +105,7 @@ function managerQuestions() {
   });
 }
 
+// Function controls the branching question options in inquirer to provide details about Engineer(s), Intern(s), or Finish the process
 function employeeTypeQuestions() {
   inquirer.prompt(questionsEmployeeType).then(function (answers) {
     if (answers.inputEmployeeType === "Engineer") {
@@ -106,6 +118,7 @@ function employeeTypeQuestions() {
   });
 }
 
+// Creates a new Engineer object using the information provided using Inquirer and pushes the object to the team array
 function engineerQuestions() {
   inquirer.prompt(questionsEngineer).then(function (answers) {
     const engineer = new Engineer(answers.inputEngineerName, answers.inputEngineerId, answers.inputEngineerEmail, answers.inputEngineerUsername);
@@ -115,6 +128,7 @@ function engineerQuestions() {
   });
 }
 
+// Creates a new Intern object using the information provided using Inquirer and pushes the object to the team array
 function internQuestions() {
   inquirer.prompt(questionsIntern).then(function (answers) {
     const intern = new Intern(answers.inputInternName, answers.inputInternId, answers.inputInternEmail, answers.inputInternSchool);
@@ -124,11 +138,12 @@ function internQuestions() {
   });
 }
 
+// Function to write the HTML file
 function writeToFile(fileName, answers) {
   fs.writeFile(fileName, answers, (err) => (err ? console.error(err) : console.log("Success!")));
 }
 
-// Function to initialize app
+// Function to initialize app, will start with asking the Manger questions
 function init() {
   managerQuestions();
 }

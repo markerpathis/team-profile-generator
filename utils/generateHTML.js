@@ -1,5 +1,7 @@
+// Import
 const generateCards = require("./generateCards");
 
+// generates the HTML for the team profile and includes the cards created in the generateCards function
 function generateHTML(team) {
   return `
   <!DOCTYPE html>
@@ -34,4 +36,5 @@ function generateHTML(team) {
   `;
 }
 
+// Exports generateHTML so it can be used ouside of this specific js file after being imported
 module.exports = generateHTML;

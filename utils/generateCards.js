@@ -1,3 +1,4 @@
+// Generates the cards for the team profile using the information saved in the team array
 function generateCards(team) {
   let cardString = "";
   let cardTemplate = "";
@@ -52,4 +53,5 @@ function generateCards(team) {
   return cardString;
 }
 
+// Exports generageCards so it can be used ouside of this specific js file after being imported
 module.exports = generateCards;
