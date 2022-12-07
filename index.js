@@ -1,21 +1,7 @@
-// npm init and install inquirer v8.2.4
-// install jest as a dev dependency
-
-// Inquirer Flow
-// Objective:
-// Prompt and enter team members and their information, an HTML file is generated that displays a nicely formatted team roster based on the input
-// Requirements:
-// Step 1 - team managers name, employee ID, email address, and office number
-// Step 2 - option to add engineer or intern or finsih building my team
-/////////// engineer - name, employee ID, email, github username, then return to menu
-/////////// intern - name, employee ID, email, school, then return to menu
-/////////// when finished, the HTML file is generated
-
 // Packages needed for this application
 const fs = require("fs");
 const inquirer = require("inquirer");
 const generateHTML = require("./utils/generateHTML");
-// const generateCards = require("./utils/generateCards");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -103,7 +89,6 @@ function managerQuestions() {
   inquirer.prompt(questionsManager).then(function (answers) {
     const manager = new Manager(answers.inputManagerName, answers.inputManagerId, answers.inputManagerEmail, answers.inputManagerOffice);
     team.push(manager);
-    console.log(team);
 
     employeeTypeQuestions();
   });
@@ -112,13 +97,11 @@ function managerQuestions() {
 function employeeTypeQuestions() {
   inquirer.prompt(questionsEmployeeType).then(function (answers) {
     if (answers.inputEmployeeType === "Engineer") {
-      console.log("Engineer Selected!");
       engineerQuestions();
     } else if (answers.inputEmployeeType === "Intern") {
-      console.log("Intern Selected!");
       internQuestions();
     } else if (answers.inputEmployeeType === "I'm finished") {
-      writeToFile("index2.html", generateHTML(team));
+      writeToFile("index.html", generateHTML(team));
     }
   });
 }
@@ -127,7 +110,6 @@ function engineerQuestions() {
   inquirer.prompt(questionsEngineer).then(function (answers) {
     const engineer = new Engineer(answers.inputEngineerName, answers.inputEngineerId, answers.inputEngineerEmail, answers.inputEngineerUsername);
     team.push(engineer);
-    console.log(team);
 
     employeeTypeQuestions();
   });
@@ -137,7 +119,6 @@ function internQuestions() {
   inquirer.prompt(questionsIntern).then(function (answers) {
     const intern = new Intern(answers.inputInternName, answers.inputInternId, answers.inputInternEmail, answers.inputInternSchool);
     team.push(intern);
-    console.log(team);
 
     employeeTypeQuestions();
   });
